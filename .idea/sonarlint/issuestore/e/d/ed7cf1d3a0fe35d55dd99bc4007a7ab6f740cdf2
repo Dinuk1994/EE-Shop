@@ -1,0 +1,13 @@
+
+m
+java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ç¢ıã8««„ïÎ1
+y
+java:S1104"WMake txtUserName a static final constant or non-public and provide accessors if needed.(÷‹Ú’üÿÿÿÿ8««„ïÎ1
+y
+java:S1104"WMake txtPassword a static final constant or non-public and provide accessors if needed.(¬ä©Óÿÿÿÿÿ8««„ïÎ1
+p
+java:S1104"SMake lblTime a static final constant or non-public and provide accessors if needed.(¿°×•8««„ïÎ1
+u
+java:S1104"SMake lblDate a static final constant or non-public and provide accessors if needed.(…“À„ÿÿÿÿÿ8 ØïÎ1
+O
+java:S1172+"2Remove this unused method parameter "actionEvent".(Ğ’ƒÀ8á«„ïÎ1
