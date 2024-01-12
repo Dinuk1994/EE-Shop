@@ -6,13 +6,13 @@ import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dao.DaoFactory;
 import dao.custom.UserRegDao;
-import dao.custom.impl.UserRegDaoImpl;
 import dao.util.BoType;
 import dao.util.DaoType;
 import dto.UserDto;
 import dto.tm.UserTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,7 +21,6 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,6 +28,7 @@ import java.util.Optional;
 
 public class UserRegisterFormController {
 
+    public JFXButton newUserBtnOnAction;
     @FXML
     private AnchorPane pane2;
 
@@ -88,6 +88,21 @@ public class UserRegisterFormController {
         colPrimaryPassword.setCellValueFactory(new TreeItemPropertyValueFactory<>("primaryPassword"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
+        tblUser.getSelectionModel().selectedItemProperty().addListener((observableValue, userTmTreeItem, newValue) -> {
+            setData(newValue);
+        });
+
+    }
+
+    private void setData(TreeItem<UserTm> newValue) {
+        if (newValue!=null){
+            lblId.setText(newValue.getValue().getUserId());
+            txtName.setText(newValue.getValue().getName());
+            txtEmail.setText(newValue.getValue().getEmail());
+            txtAddress.setText(newValue.getValue().getAddress());
+            txtNumber.setText(String.valueOf(newValue.getValue().getContactNumber()));
+            txtPassword.setText(String.valueOf(newValue.getValue().getPrimaryPassword()));
+        }
     }
 
     private void loadUserRegTable() {
@@ -215,4 +230,30 @@ public class UserRegisterFormController {
     }
 
 
+    public void updateBtnOnAction(ActionEvent actionEvent)  {
+        try {
+            UserDto userDto=new UserDto(lblId.getText(), txtName.getText(),txtEmail.getText(),txtAddress.getText(),Integer.parseInt(txtNumber.getText()),txtPassword.getText());
+            boolean isUpdate=userRegBo.updateUser(userDto);
+            if (isUpdate){
+                new Alert(Alert.AlertType.INFORMATION,"User Details Updated").show();
+                loadUserRegTable();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Something Went Wrong!").show();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void newUserBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane2.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UserRegisterForm.fxml"))));
+        stage.setTitle("User Registration Form");
+        stage.setResizable(false);
+        stage.show();
+    }
 }

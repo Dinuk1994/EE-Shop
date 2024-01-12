@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserRegBo extends SuperBo {
     boolean saveUser(UserDto userDto) throws SQLException, ClassNotFoundException;
-    boolean updateUser(UserDto userDto);
+    boolean updateUser(UserDto userDto) throws SQLException, ClassNotFoundException;
 
     boolean deleteUser(String userId) throws SQLException, ClassNotFoundException;
 

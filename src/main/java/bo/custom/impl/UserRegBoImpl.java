@@ -27,9 +27,24 @@ public class UserRegBoImpl implements UserRegBo {
     }
 
     @Override
+
+
     public boolean updateUser(UserDto userDto) {
-        return false;
+        try {
+            return userRegDao.update(new User(
+                    userDto.getUserId(),
+                    userDto.getName(),
+                    userDto.getEmail(),
+                    userDto.getAddress(),
+                    userDto.getContactNumber(),
+                    userDto.getPrimaryPassword()
+            ));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
+
 
     @Override
     public boolean deleteUser(String Id) throws SQLException, ClassNotFoundException {
