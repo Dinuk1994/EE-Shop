@@ -37,3 +37,11 @@ $src/main/java/dao/util/CrudUtil.java,9\8\982fb6ab96207e3dd9fec0af0e29293d46b73
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+R
+"src/main/java/db/DBConnection.java,f\d\fd7336f68247f5ace91042607378ff616e4285dd
+M
+src/main/java/bo/SuperBo.java,6\9\69fab5e928f2a1d545d917bdc79a71b4a4e756b3
+V
+&src/main/java/bo/custom/UserRegBo.java,4\f\4f3a333b86f7528c87d08a472c79418dcc6da13e
+_
+/src/main/java/bo/custom/impl/UserRegBoImpl.java,3\f\3f6a68fdb572c5621ed03344cc5f89ec12e06625
