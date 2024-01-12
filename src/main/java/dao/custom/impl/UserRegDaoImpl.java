@@ -9,13 +9,14 @@ import entity.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserRegDaoImpl implements UserRegDao {
     @Override
     public boolean save(User entity) throws SQLException, ClassNotFoundException {
-        String sql="INSERT INTO User VALUES(?,?,?,?,?)";
-        return CrudUtil.execute(sql,entity.getUserId(),entity.getName(),entity.getAddress(),entity.getContactNumber(),entity.getPrimaryPassword());
+        String sql="INSERT INTO User VALUES(?,?,?,?,?,?)";
+        return CrudUtil.execute(sql,entity.getUserId(),entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getPrimaryPassword());
     }
 
     @Override
@@ -24,13 +25,28 @@ public class UserRegDaoImpl implements UserRegDao {
     }
 
     @Override
-    public boolean delete(User entity) {
-        return false;
+    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+        String sql="DELETE FROM User WHERE userId = ?";
+        return CrudUtil.execute(sql,id);
     }
 
     @Override
-    public List<User> getAll() {
-        return null;
+    public List<User> getAll() throws SQLException, ClassNotFoundException {
+        List<User> userList=new ArrayList<>();
+        String sql="SELECT * FROM User";
+        ResultSet resultset = CrudUtil.execute(sql);
+        while (resultset.next()){
+            userList.add(new User(
+                    resultset.getString(1),
+                    resultset.getString(2),
+                    resultset.getString(3),
+                    resultset.getString(4),
+                    resultset.getInt(5),
+                    resultset.getString(6)
+            ));
+
+        }
+        return userList;
     }
 
     @Override
