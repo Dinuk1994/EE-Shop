@@ -5,10 +5,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -38,8 +42,12 @@ public class AdminDashboardFormController {
 
 
     @FXML
-    void regBtnOnAction(ActionEvent event) {
-
+    void regBtnOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) pane1.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UserRegisterForm.fxml"))));
+        stage.setResizable(false);
+        stage.setTitle("User Registration Form");
+        stage.show();
     }
 
     @FXML

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToolbar?>
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserRegisterFormController">
+<AnchorPane fx:id="pane2" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserRegisterFormController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
@@ -22,89 +22,92 @@
             <MotionBlur />
          </effect>
       </ImageView>
-      <Label alignment="CENTER" layoutX="79.0" layoutY="91.0" prefHeight="40.0" prefWidth="173.0" style="-fx-background-color: #D5A953; -fx-border-color: black; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="ID" textFill="#ff0202">
+      <Label fx:id="lblId" alignment="CENTER" layoutX="89.0" layoutY="55.0" prefHeight="40.0" prefWidth="173.0" style="-fx-background-color: #D5A953; -fx-border-color: black; -fx-border-radius: 20px; -fx-background-radius: 20px;" text="ID" textFill="#ff0202">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <JFXToolbar layoutX="658.0" layoutY="399.0" prefHeight="0.0" prefWidth="25.0">
-         <opaqueInsets>
-            <Insets bottom="50.0" />
-         </opaqueInsets>
-      </JFXToolbar>
-      <VBox layoutX="79.0" layoutY="181.0" prefHeight="459.0" prefWidth="246.0">
-         <children>
-            <Label lineSpacing="25.0" prefHeight="39.0" prefWidth="309.0" text="User Name           ">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </Label>
-            <Label prefHeight="39.0" prefWidth="309.0" text="Email                    ">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </Label>
-            <Label prefHeight="39.0" prefWidth="309.0" text="Address                 ">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </Label>
-            <Label layoutX="10.0" layoutY="188.0" prefHeight="39.0" prefWidth="309.0" text="Contact Number  ">
-               <font>
-                  <Font size="27.0" />
-               </font>
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </Label>
-            <Label layoutX="10.0" layoutY="277.0" prefHeight="39.0" prefWidth="309.0" text="New Password">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Label>
-         </children>
-         <opaqueInsets>
-            <Insets left="50.0" right="5.0" />
-         </opaqueInsets>
-      </VBox>
-      <VBox layoutX="378.0" layoutY="181.0" prefHeight="459.0" prefWidth="561.0">
-         <children>
-            <JFXTextField>
-               <VBox.margin>
-                  <Insets bottom="50.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField layoutX="10.0" layoutY="10.0">
-               <VBox.margin>
-                  <Insets bottom="60.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField layoutX="10.0" layoutY="91.0">
-               <VBox.margin>
-                  <Insets bottom="65.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField layoutX="10.0" layoutY="172.0">
-               <VBox.margin>
-                  <Insets bottom="60.0" />
-               </VBox.margin>
-            </JFXTextField>
-            <JFXTextField layoutX="10.0" layoutY="253.0" prefHeight="31.0" prefWidth="216.0" />
-         </children>
-         <opaqueInsets>
-            <Insets left="50.0" right="5.0" />
-         </opaqueInsets>
-      </VBox>
-      <JFXButton buttonType="RAISED" layoutX="867.0" layoutY="14.0" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #1E1ACB; -fx-background-radius: 25px;" text="Dashboard" textFill="WHITE" />
-      <JFXButton buttonType="RAISED" layoutX="1024.0" layoutY="14.0" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #1E1ACB; -fx-background-radius: 25px;" text="Dashboard" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="867.0" layoutY="14.0" onAction="#dashboardBtnOnAction" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #1E1ACB; -fx-background-radius: 25px;" text="Dashboard" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="1024.0" layoutY="14.0" onAction="#reportsBtnOnAction" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #1E1ACB; -fx-background-radius: 25px;" text="Reports" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="964.0" layoutY="301.0" onAction="#regBtnOnAction" prefHeight="48.0" prefWidth="161.0" style="-fx-background-color: #1ACB41; -fx-background-radius: 15px;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutY="2.0" onAction="#backBtnOnAction" prefHeight="73.0" prefWidth="89.0">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icons8-back-100.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="97.0" layoutY="132.0" text="User Name">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="190.0" text="User Email">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="256.0" text="Address">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="580.0" layoutY="132.0" text="Contact Number">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="580.0" layoutY="184.0" text="New Password">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtName" layoutX="238.0" layoutY="121.0" prefHeight="31.0" prefWidth="193.0" />
+      <JFXTextField fx:id="txtEmail" layoutX="238.0" layoutY="183.0" prefHeight="31.0" prefWidth="193.0" />
+      <JFXTextField fx:id="txtAddress" layoutX="238.0" layoutY="241.0" prefHeight="31.0" prefWidth="733.0" />
+      <JFXTextField fx:id="txtNumber" layoutX="771.0" layoutY="121.0" prefHeight="31.0" prefWidth="193.0" />
+      <Label layoutX="216.0" layoutY="131.0" text=":">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="213.0" layoutY="191.0" text=":">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="216.0" layoutY="255.0" text=":">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="741.0" layoutY="131.0" text=":">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="744.0" layoutY="183.0" text=":">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <JFXTreeTableView fx:id="tblUser" layoutX="40.0" layoutY="375.0" prefHeight="400.0" prefWidth="1121.0">
+         <columns>
+            <TreeTableColumn fx:id="colId" prefWidth="108.0" text="User ID" />
+            <TreeTableColumn fx:id="colUserName" prefWidth="155.0" text="User Name" />
+            <TreeTableColumn fx:id="colUserEmail" prefWidth="199.0" text="User Email" />
+            <TreeTableColumn fx:id="colContactNumber" prefWidth="138.0" text="Contact Number" />
+            <TreeTableColumn fx:id="colAddress" prefWidth="253.0" text="Address" />
+            <TreeTableColumn fx:id="colPrimaryPassword" prefWidth="152.0" text="Primary Password" />
+            <TreeTableColumn fx:id="colOption" prefWidth="115.0" text="Option" />
+         </columns>
+      </JFXTreeTableView>
+      <JFXPasswordField fx:id="txtPassword" layoutX="771.0" layoutY="176.0" prefHeight="31.0" prefWidth="193.0" />
    </children>
 </AnchorPane>
