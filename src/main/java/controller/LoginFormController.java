@@ -1,6 +1,16 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.LoginBo;
+import bo.custom.UserRegBo;
 import com.jfoenix.controls.JFXTextField;
+import dao.DaoFactory;
+import dao.custom.LoginDao;
+import dao.custom.UserRegDao;
+import dao.util.BoType;
+import dao.util.DaoType;
+import dto.UserDto;
+import entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,9 +35,11 @@ public class LoginFormController {
     public Label lblTime;
     public Label lblDate;
 
+    LoginBo loginBo=BoFactory.getInstance().getBo(BoType.LOGIN);
     public void initialize(){
         calculateTime();
     }
+
 
     private void calculateTime() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.ZERO, actionEvent -> lblTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")))
@@ -40,7 +53,7 @@ public class LoginFormController {
         timeline1.play();
     }
 
-    public void loginBtnOnAction(ActionEvent actionEvent) throws IOException {
+    public void adminLoginBtnOnAction(ActionEvent actionEvent) throws IOException {
         if (!txtPassword.getText().isEmpty() && !txtUserName.getText().isEmpty()) {
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/AdminDashboardForm.fxml"))));
@@ -52,4 +65,33 @@ public class LoginFormController {
             alert.show();
         }
     }
+
+    public void userLoginBtnOnAction(ActionEvent actionEvent) {
+        String userName = txtUserName.getText();
+        String passWord = txtPassword.getText();
+
+        if (!userName.isEmpty() && !passWord.isEmpty()) {
+            try {
+                UserDto userDto = new UserDto();
+
+                userDto.setName(userName);
+                userDto.setPrimaryPassword(passWord);
+
+                if (loginBo.isFound(userDto)) {
+                    new Alert(Alert.AlertType.INFORMATION,"User Logged Successfully").show();
+                } else {
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password");
+                    alert.show();
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fill the Required Blanks");
+            alert.show();
+        }
+    }
+
 }
+

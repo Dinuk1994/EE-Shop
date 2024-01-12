@@ -1,9 +1,11 @@
 
 P
-java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ8ùåäÏ1
+java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ8î¸üôÏ1
 h
-java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•8úåäÏ1
+java:S1301"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•8ï¸üôÏ1
 ¶
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê8üåäÏ1
+java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê8ö¸üôÏ1
+T
+java:S1128"7Remove this unused import 'bo.custom.impl.LoginBoImpl'.(Í»Ã8›ƒ—øÏ1
 J
-java:S1128"(Remove this unused import 'entity.User'.(Ï£Šûıÿÿÿÿ8ğç€òÏ1
+java:S1128"(Remove this unused import 'entity.User'.(Ï£Šûıÿÿÿÿ8›ƒ—øÏ1

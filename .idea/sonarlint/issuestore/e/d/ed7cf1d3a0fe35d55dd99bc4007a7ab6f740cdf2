@@ -1,13 +1,27 @@
 
 m
-java:S1104"PMake pane a static final constant or non-public and provide accessors if needed.(ç¢ıã8««„ïÎ1
+java:S1104 "PMake pane a static final constant or non-public and provide accessors if needed.(ç¢ıã8¢ÒÕ÷Ï1
 y
-java:S1104"WMake txtUserName a static final constant or non-public and provide accessors if needed.(÷‹Ú’üÿÿÿÿ8««„ïÎ1
+java:S1104!"WMake txtUserName a static final constant or non-public and provide accessors if needed.(÷‹Ú’üÿÿÿÿ8¢ÒÕ÷Ï1
 y
-java:S1104"WMake txtPassword a static final constant or non-public and provide accessors if needed.(¬ä©Óÿÿÿÿÿ8««„ïÎ1
+java:S1104""WMake txtPassword a static final constant or non-public and provide accessors if needed.(¬ä©Óÿÿÿÿÿ8¢ÒÕ÷Ï1
 p
-java:S1104"SMake lblTime a static final constant or non-public and provide accessors if needed.(¿°×•8««„ïÎ1
+java:S1104#"SMake lblTime a static final constant or non-public and provide accessors if needed.(¿°×•8¢ÒÕ÷Ï1
 u
-java:S1104"SMake lblDate a static final constant or non-public and provide accessors if needed.(…“À„ÿÿÿÿÿ8 ØïÎ1
+java:S1104$"SMake lblDate a static final constant or non-public and provide accessors if needed.(…“À„ÿÿÿÿÿ8¢ÒÕ÷Ï1
 O
-java:S1172+"2Remove this unused method parameter "actionEvent".(Ğ’ƒÀ8á«„ïÎ1
+java:S11728"2Remove this unused method parameter "actionEvent".(¤™¸Ä8ÒÒÕ÷Ï1
+T
+java:S1172E"2Remove this unused method parameter "actionEvent".(ı‹òÆşÿÿÿÿ8ÜÒÕ÷Ï1
+M
+java:S1128"0Remove this unused import 'bo.custom.UserRegBo'.(¹ƒ§‘8ó™ù÷Ï1
+M
+java:S1128"+Remove this unused import 'dao.DaoFactory'.(ÕèÇ‡úÿÿÿÿ8ó™ù÷Ï1
+R
+java:S1128"0Remove this unused import 'dao.custom.LoginDao'.(¨şÖùÿÿÿÿ8ô™ù÷Ï1
+O
+java:S1128	"2Remove this unused import 'dao.custom.UserRegDao'.(˜Íİ¨8ô™ù÷Ï1
+J
+java:S1128"-Remove this unused import 'dao.util.DaoType'.(ô¼8ô™ù÷Ï1
+J
+java:S1128"(Remove this unused import 'entity.User'.(Ï£Šûıÿÿÿÿ8ô™ù÷Ï1

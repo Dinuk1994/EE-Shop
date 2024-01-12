@@ -62,7 +62,7 @@ public class UserRegBoImpl implements UserRegBo {
                     user.getEmail(),
                     user.getAddress(),
                     user.getContactNumber(),
-                    user.getPrimaryPassword()
+                    user.getNewPassword()
             ));
         }
         return dtoList;

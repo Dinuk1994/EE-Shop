@@ -1,5 +1,6 @@
 package dao.custom.impl;
 
+import dao.custom.LoginDao;
 import dao.custom.UserRegDao;
 import dao.util.CrudUtil;
 import db.DBConnection;
@@ -16,14 +17,14 @@ public class UserRegDaoImpl implements UserRegDao {
     @Override
     public boolean save(User entity) throws SQLException, ClassNotFoundException {
         String sql="INSERT INTO User VALUES(?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,entity.getUserId(),entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getPrimaryPassword());
+        return CrudUtil.execute(sql,entity.getUserId(),entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getNewPassword());
     }
 
 
     @Override
     public boolean update(User entity) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE User SET name=?, email=?, address=?, contactNumber=?, newPassword=? WHERE userId=?";
-        return CrudUtil.execute(sql,entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getPrimaryPassword(),entity.getUserId());
+        return CrudUtil.execute(sql,entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getNewPassword(),entity.getUserId());
     }
 
     @Override
