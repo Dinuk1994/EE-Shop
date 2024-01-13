@@ -105,16 +105,35 @@
             <Font size="19.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="txtPassword" layoutX="452.0" layoutY="455.0" prefHeight="31.0" prefWidth="438.0">
+
+      <JFXTextField fx:id="txtPassword" layoutX="452.0" layoutY="455.0" prefHeight="31.0" prefWidth="438.0">
          <font>
             <Font size="19.0" />
          </font>
-      </JFXPasswordField>
+      </JFXTextField>
+
+
       <JFXButton buttonType="RAISED" layoutX="493.0" layoutY="589.0" onAction="#updateBtnOnAction" prefHeight="51.0" prefWidth="193.0" style="-fx-background-color: #86A7FC; -fx-background-radius: 15px;" text="Update " textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </JFXButton>
+      <JFXTextField fx:id="txtSearchEmail" layoutX="391.0" layoutY="103.0" promptText="Enter User Email">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="txtSearchPassword" layoutX="693.0" layoutY="103.0" prefHeight="42.0" prefWidth="213.0" promptText="Enter Password">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton buttonType="RAISED" layoutX="950.0" layoutY="99.0" onAction="#searchBtnOnAction" prefHeight="51.0" prefWidth="125.0" style="-fx-background-color: #9ADE7B; -fx-background-radius: 15px;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </JFXButton>
+
 
    </children>
 </AnchorPane>
