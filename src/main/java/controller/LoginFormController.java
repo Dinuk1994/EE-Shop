@@ -16,6 +16,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -30,10 +31,10 @@ import java.time.format.DateTimeFormatter;
 
 public class LoginFormController {
     public AnchorPane pane;
-    public JFXTextField txtUserName;
     public JFXTextField txtPassword;
     public Label lblTime;
     public Label lblDate;
+    public JFXTextField txtEmail;
 
     LoginBo loginBo=BoFactory.getInstance().getBo(BoType.LOGIN);
     public void initialize(){
@@ -54,7 +55,7 @@ public class LoginFormController {
     }
 
     public void adminLoginBtnOnAction(ActionEvent actionEvent) throws IOException {
-        if (!txtPassword.getText().isEmpty() && !txtUserName.getText().isEmpty()) {
+        if (!txtPassword.getText().isEmpty() && !txtEmail.getText().isEmpty()) {
             Stage stage = (Stage) pane.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/AdminDashboardForm.fxml"))));
             stage.setTitle("Dashboard - Admin");
@@ -67,26 +68,33 @@ public class LoginFormController {
     }
 
     public void userLoginBtnOnAction(ActionEvent actionEvent) {
-        String userName = txtUserName.getText();
+        String email = txtEmail.getText();
         String passWord = txtPassword.getText();
 
-        if (!userName.isEmpty() && !passWord.isEmpty()) {
+        if (!email.isEmpty() && !passWord.isEmpty()) {
             try {
                 UserDto userDto = new UserDto();
-
-                userDto.setName(userName);
+                userDto.setEmail(email);
                 userDto.setPrimaryPassword(passWord);
 
                 if (loginBo.isFound(userDto)) {
+
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/UserDashboardForm.fxml"));
+                    Parent root=loader.load();
+
+                    UserDashboardFormController userDashboardFormController = loader.getController();
+                    userDashboardFormController.setUserData(email,passWord);
+
+
                     new Alert(Alert.AlertType.INFORMATION,"User Logged Successfully").show();
                     Stage stage = (Stage) pane.getScene().getWindow();
-                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UserDashboardForm.fxml"))));
+                    stage.setScene(new Scene(root));
                     stage.setTitle("User Dashboard Form");
                     stage.setResizable(false);
                     stage.show();
                 } else {
 
-                    Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password");
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid Email Address or Password");
                     alert.show();
                 }
             } catch (SQLException | ClassNotFoundException e) {

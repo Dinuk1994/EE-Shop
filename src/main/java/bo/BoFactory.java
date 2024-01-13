@@ -2,6 +2,7 @@ package bo;
 
 import bo.custom.impl.LoginBoImpl;
 import bo.custom.impl.UserRegBoImpl;
+import bo.custom.impl.UserUpdateBoImpl;
 import dao.util.BoType;
 
 public class BoFactory {
@@ -17,6 +18,7 @@ public class BoFactory {
         switch (type){
             case USER:return (T) new UserRegBoImpl();
             case LOGIN:return (T) new LoginBoImpl();
+            case UPDATE:return (T) new UserUpdateBoImpl();
         }
         return null;
     }

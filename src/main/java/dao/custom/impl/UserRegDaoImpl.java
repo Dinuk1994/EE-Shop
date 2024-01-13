@@ -31,6 +31,7 @@ public class UserRegDaoImpl implements UserRegDao {
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         String sql="DELETE FROM User WHERE userId = ?";
         return CrudUtil.execute(sql,id);
+
     }
 
     @Override

@@ -1,5 +1,5 @@
 package dao.util;
 
 public enum  DaoType {
-    USER,LOGIN
+    USER,LOGIN,UPDATE
 }
