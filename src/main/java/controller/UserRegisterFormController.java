@@ -191,9 +191,8 @@ public class UserRegisterFormController {
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION,"User Registered").show();
                 loadUserRegTable();
-            }else{
-                new Alert(Alert.AlertType.ERROR,"Something Went Wrong").show();
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -237,8 +236,7 @@ public class UserRegisterFormController {
             if (isUpdate){
                 new Alert(Alert.AlertType.INFORMATION,"User Details Updated").show();
                 loadUserRegTable();
-            }else {
-                new Alert(Alert.AlertType.ERROR,"Something Went Wrong!").show();
+
             }
 
         } catch (SQLException e) {

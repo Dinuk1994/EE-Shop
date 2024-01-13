@@ -79,6 +79,11 @@ public class LoginFormController {
 
                 if (loginBo.isFound(userDto)) {
                     new Alert(Alert.AlertType.INFORMATION,"User Logged Successfully").show();
+                    Stage stage = (Stage) pane.getScene().getWindow();
+                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UserDashboardForm.fxml"))));
+                    stage.setTitle("User Dashboard Form");
+                    stage.setResizable(false);
+                    stage.show();
                 } else {
 
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password");
@@ -86,6 +91,8 @@ public class LoginFormController {
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Fill the Required Blanks");

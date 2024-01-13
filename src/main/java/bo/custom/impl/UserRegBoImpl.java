@@ -6,6 +6,7 @@ import dao.custom.UserRegDao;
 import dao.util.DaoType;
 import dto.UserDto;
 import entity.User;
+import javafx.scene.control.Alert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,22 +17,8 @@ public class UserRegBoImpl implements UserRegBo {
     UserRegDao userRegDao= DaoFactory.getInstance().getDao(DaoType.USER);
     @Override
     public boolean saveUser(UserDto userDto) throws SQLException, ClassNotFoundException {
-        return userRegDao.save(new User(
-                userDto.getUserId(),
-                userDto.getName(),
-                userDto.getEmail(),
-                userDto.getAddress(),
-                userDto.getContactNumber(),
-                userDto.getPrimaryPassword()
-        ));
-    }
-
-    @Override
-
-
-    public boolean updateUser(UserDto userDto) {
-        try {
-            return userRegDao.update(new User(
+        if (isValidPassword(userDto.getPrimaryPassword())) {
+            return userRegDao.save(new User(
                     userDto.getUserId(),
                     userDto.getName(),
                     userDto.getEmail(),
@@ -39,12 +26,34 @@ public class UserRegBoImpl implements UserRegBo {
                     userDto.getContactNumber(),
                     userDto.getPrimaryPassword()
             ));
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Password must contain 8 charactors and digits ");
+            return false;
         }
     }
 
+
+    @Override
+    public boolean updateUser(UserDto userDto) {
+        if (isValidPassword(userDto.getPrimaryPassword())) {
+            try {
+                return userRegDao.update(new User(
+                        userDto.getUserId(),
+                        userDto.getName(),
+                        userDto.getEmail(),
+                        userDto.getAddress(),
+                        userDto.getContactNumber(),
+                        userDto.getPrimaryPassword()
+                ));
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Password must contain 8 charactors and digits ");
+            return false;
+        }
+    }
 
     @Override
     public boolean deleteUser(String Id) throws SQLException, ClassNotFoundException {
@@ -67,6 +76,34 @@ public class UserRegBoImpl implements UserRegBo {
         }
         return dtoList;
 
+    }
+
+    //-------------------------Validations----------------------------------------------------------
+
+
+    @Override
+    public boolean isValidPassword(String password) {
+        if (password==null||password.length()<8){
+            return false;
+        }
+        boolean hasDigit=false;
+        boolean hasLetter=false;
+        boolean hasSymbol=false;
+
+        for (char ch:password.toCharArray()) {
+            if (Character.isDigit(ch)){
+                hasDigit = true;
+            }else if(Character.isLetter(ch)){
+                hasLetter=true;
+            } else if (!Character.isWhitespace(ch)) {
+                hasSymbol=true;
+            }
+            if (hasDigit && hasLetter && hasSymbol){
+                break;
+            }
+
+        }
+        return hasDigit && hasLetter && hasSymbol;
     }
 
 }

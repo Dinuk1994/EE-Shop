@@ -12,5 +12,7 @@ public interface UserRegBo extends SuperBo {
 
     boolean deleteUser(String userId) throws SQLException, ClassNotFoundException;
 
+    boolean isValidPassword(String password);
+
     List<UserDto> allUsers() throws SQLException, ClassNotFoundException;
 }
