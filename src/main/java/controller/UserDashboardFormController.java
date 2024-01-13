@@ -23,7 +23,6 @@ public class UserDashboardFormController {
         this.password=password;
     }
 
-
     @FXML
     void addNewItemsBtnOnAction(ActionEvent event) {
 
@@ -59,6 +58,5 @@ public class UserDashboardFormController {
         stage.show();
 
     }
-
 
 }
