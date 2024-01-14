@@ -24,7 +24,12 @@ public class UserDashboardFormController {
     }
 
     @FXML
-    void addNewItemsBtnOnAction(ActionEvent event) {
+    void addNewItemsBtnOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) pane5.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/NewItemForm.fxml"))));
+        stage.setTitle("Add New Item Form");
+        stage.setResizable(false);
+        stage.show();
 
     }
 
