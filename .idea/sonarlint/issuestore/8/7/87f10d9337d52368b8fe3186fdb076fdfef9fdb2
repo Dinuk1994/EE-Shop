@@ -1,5 +1,8 @@
 
 P
-java:S1121".Extract the assignment out of this expression.(Ó­Í™øÿÿÿÿ8ºãÜ“Ğ1
+java:S1121".Extract the assignment out of this expression.(Ó­Í™øÿÿÿÿ8ÑØÉĞ1
 »
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(§İüáşÿÿÿÿ8½ãÜ“Ğ1
+java:S6548
+"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(§İüáşÿÿÿÿ8ÛØÉĞ1
+Y
+java:S1128"7Remove this unused import 'com.sun.javafx.geom.AreaOp'.(ğ¤¥‰şÿÿÿÿ8Æ®ÜĞ1
