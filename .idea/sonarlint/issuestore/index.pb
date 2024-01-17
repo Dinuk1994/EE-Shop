@@ -1879,3 +1879,5 @@ Y
 )src/main/java/dao/custom/NewOrderDao.java,3\6\36b912a69797ac36b529b9817facb50621f2e84b
 d
 4src/main/java/controller/NewOrderFormController.java,6\8\688e285e2510614e6fdeae74720a6151820bb45a
+W
+'src/main/java/bo/custom/NewOrderBo.java,a\a\aa024d4d779b36b7ac936a6736ebcf52ed8d3520
