@@ -1865,3 +1865,17 @@ T
 $src/main/java/dao/util/ItemType.java,3\c\3c08e4bf944a534929cd0e989fa0e7cdd5c4a969
 P
  src/main/java/dto/tm/ItemTm.java,9\b\9bcbd3a396619ca96463cd87f096ec09b0b2ae8f
+O
+src/main/java/entity/order.java,f\b\fb24b351d528e8801f6c720e4bfed64ce3b93e0c
+O
+src/main/java/entity/Order.java,5\6\5663a0c567496d98ab82a4a4d80222cd7424f97b
+O
+src/main/java/dto/OrderDto.java,d\9\d99f6e4a8edc2b395bd1e1d43fbcd641e1fa81f5
+b
+2src/main/java/dao/custom/impl/NewOrderDaoImpl.java,c\2\c24ee5f3a7f0a20fd0a02bb7723448c51d635f25
+`
+0src/main/java/bo/custom/impl/NewOrderBoImpl.java,6\f\6f4961dfbcd5abec057ddb3c583c05af62b47982
+Y
+)src/main/java/dao/custom/NewOrderDao.java,3\6\36b912a69797ac36b529b9817facb50621f2e84b
+d
+4src/main/java/controller/NewOrderFormController.java,6\8\688e285e2510614e6fdeae74720a6151820bb45a

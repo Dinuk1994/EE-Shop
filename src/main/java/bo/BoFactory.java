@@ -1,10 +1,9 @@
 package bo;
 
 import bo.custom.impl.LoginBoImpl;
-import bo.custom.impl.NewItemBoImpl;
+import bo.custom.impl.NewOrderBoImpl;
 import bo.custom.impl.UserRegBoImpl;
 import bo.custom.impl.UserUpdateBoImpl;
-import com.sun.javafx.geom.AreaOp;
 import dao.util.BoType;
 
 public class BoFactory {
@@ -21,7 +20,7 @@ public class BoFactory {
             case USER:return (T) new UserRegBoImpl();
             case LOGIN:return (T) new LoginBoImpl();
             case UPDATE:return (T) new UserUpdateBoImpl();
-            case ITEM:return (T) new NewItemBoImpl();
+            case ITEM:return (T) new NewOrderBoImpl();
         }
         return null;
     }
