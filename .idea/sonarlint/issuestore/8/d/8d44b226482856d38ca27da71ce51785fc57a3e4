@@ -1,9 +1,5 @@
 
 P
-java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ8à‘ªÇĞ1
+java:S1121".Extract the assignment out of this expression.(‰À°Ûşÿÿÿÿ8à‘ªÇĞ1
 ¶
-java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê8è‘ªÇĞ1
-T
-java:S1128"7Remove this unused import 'bo.custom.impl.LoginBoImpl'.(Í»Ã8“§ÈĞ1
-J
-java:S1128	"(Remove this unused import 'entity.User'.(Ï£Šûıÿÿÿÿ8“§ÈĞ1
+java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(ÄßÜê8è‘ªÇĞ1
