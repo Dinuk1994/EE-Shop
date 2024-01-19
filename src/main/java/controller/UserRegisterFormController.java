@@ -215,7 +215,7 @@ public class UserRegisterFormController {
             UserDto userDto=userRegDao.lastUser();
             if (userDto!=null){
                 String userId= userDto.getUserId();
-                int num=Integer.parseInt(userId.split("[U]")[1]);
+                int num=Integer.parseInt(userId.split("U")[1]);
                 num++;
                 lblId.setText(String.format("U%03d",num));
             }else{
@@ -246,6 +246,7 @@ public class UserRegisterFormController {
         }
 
     }
+
 
     public void newUserBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage) pane2.getScene().getWindow();
