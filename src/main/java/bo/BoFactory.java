@@ -1,7 +1,7 @@
 package bo;
 
 import bo.custom.impl.LoginBoImpl;
-import bo.custom.impl.NewOrderBoImpl;
+import bo.custom.impl.CustomerBoImpl;
 import bo.custom.impl.UserRegBoImpl;
 import bo.custom.impl.UserUpdateBoImpl;
 import dao.util.BoType;
@@ -20,7 +20,7 @@ public class BoFactory {
             case USER:return (T) new UserRegBoImpl();
             case LOGIN:return (T) new LoginBoImpl();
             case UPDATE:return (T) new UserUpdateBoImpl();
-            case ITEM:return (T) new NewOrderBoImpl();
+            case ITEM:return (T) new CustomerBoImpl();
         }
         return null;
     }

@@ -24,16 +24,6 @@ public class UserDashboardFormController {
     }
 
     @FXML
-    void addNewItemsBtnOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) pane5.getScene().getWindow();
-        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/NewOrderForm.fxml"))));
-        stage.setTitle("Add New Order Form");
-        stage.setResizable(false);
-        stage.show();
-
-    }
-
-    @FXML
     void inventoryBtnOnAction(ActionEvent event) {
 
     }
@@ -64,4 +54,12 @@ public class UserDashboardFormController {
 
     }
 
+    public void addNewCustomerBtnOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane5.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/NewCustomer.fxml"))));
+        stage.setTitle("Add New Customer Form");
+        stage.setResizable(false);
+        stage.show();
+
+    }
 }
