@@ -6,6 +6,8 @@ import bo.custom.impl.UserRegBoImpl;
 import bo.custom.impl.UserUpdateBoImpl;
 import dao.util.BoType;
 
+import static dao.util.DaoType.CUSTOMER;
+
 public class BoFactory {
     private static BoFactory boFactory;
 
@@ -21,6 +23,7 @@ public class BoFactory {
             case LOGIN:return (T) new LoginBoImpl();
             case UPDATE:return (T) new UserUpdateBoImpl();
             case ITEM:return (T) new CustomerBoImpl();
+            case CUSTOMER:return (T) new CustomerBoImpl();
         }
         return null;
     }

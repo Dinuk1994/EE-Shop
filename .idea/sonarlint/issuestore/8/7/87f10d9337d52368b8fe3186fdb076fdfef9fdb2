@@ -1,5 +1,7 @@
 
 P
-java:S1121".Extract the assignment out of this expression.(Ó­Í™øÿÿÿÿ8ÑØÉĞ1
+java:S1121".Extract the assignment out of this expression.(Ó­Í™øÿÿÿÿ8»²Š—Ò1
 »
-java:S6548	"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(§İüáşÿÿÿÿ8ÛØÉĞ1
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(§İüáşÿÿÿÿ8¾²Š—Ò1
+S
+java:S1128	"6Remove this unused import 'dao.util.DaoType.CUSTOMER'.(‚§€ï8³ãµÒ1
