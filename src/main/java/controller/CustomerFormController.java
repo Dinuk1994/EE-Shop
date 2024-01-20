@@ -190,11 +190,11 @@ public class CustomerFormController {
             CustomerDto customerDto = customerDao.lastItem();
             if (customerDto != null) {
                 String orderId = customerDto.getCustomerId();
-                int num = Integer.parseInt(orderId.split("OR")[1]);
+                int num = Integer.parseInt(orderId.split("CU")[1]);
                 num++;
-                lblId.setText(String.format("OR%03d", num));
+                lblId.setText(String.format("CU%03d", num));
             } else {
-                lblId.setText("OR001");
+                lblId.setText("CU001");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
