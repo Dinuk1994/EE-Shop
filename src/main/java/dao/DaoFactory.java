@@ -18,7 +18,7 @@ public class DaoFactory {
             case USER:return (T)new UserRegDaoImpl();
             case LOGIN:return (T)new LoginDaoImpl();
             case UPDATE:return (T)new UserUpdateDaoImpl();
-            case ITEM:return (T)new CustomerDaoImpl();
+            case ITEM:return (T)new ItemdaoImpl();
             case ORDER:return (T)new OrdersDaoImpl();
             case CUSTOMER:return (T)new CustomerDaoImpl();
             case ORDER_DETAILS:return (T)new OrderDetailsDaoImpl();
