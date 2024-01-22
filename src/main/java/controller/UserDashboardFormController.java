@@ -24,8 +24,12 @@ public class UserDashboardFormController {
     }
 
     @FXML
-    void orderDetailsBtnOnAction(ActionEvent event) {
-
+    void orderDetailsBtnOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) pane5.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/OrderDetailsForm.fxml"))));
+        stage.setTitle("Order details Form");
+        stage.setResizable(false);
+        stage.show();
     }
 
     @FXML

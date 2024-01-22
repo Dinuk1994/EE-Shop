@@ -62,8 +62,8 @@ public class CustomerFormController {
     @FXML
     private TreeTableColumn<?, ?> colOption;
 
-    CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.ITEM);
-    CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
+    CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
 
     public void initialize() {
