@@ -14,4 +14,6 @@ public interface CustomerBo extends SuperBo {
     List<CustomerDto> allCustomers() throws SQLException, ClassNotFoundException;
 
     boolean updateCustomer(CustomerDto customerDto) throws SQLException, ClassNotFoundException;
+
+    public String generateID();
 }

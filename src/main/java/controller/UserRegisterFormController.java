@@ -74,7 +74,6 @@ public class UserRegisterFormController {
     @FXML
     private JFXPasswordField txtPassword;
 
-    UserRegDao userRegDao= DaoFactory.getInstance().getDao(DaoType.USER);
     UserRegBo userRegBo= BoFactory.getInstance().getBo(BoType.USER);
 
     public void initialize(){
@@ -211,21 +210,7 @@ public class UserRegisterFormController {
 
 
     public void generateId(){
-        try {
-            UserDto userDto=userRegDao.lastUser();
-            if (userDto!=null){
-                String userId= userDto.getUserId();
-                int num=Integer.parseInt(userId.split("U")[1]);
-                num++;
-                lblId.setText(String.format("U%03d",num));
-            }else{
-                lblId.setText("U001");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        lblId.setText(userRegBo.generateID());
     }
 
 

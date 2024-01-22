@@ -23,6 +23,7 @@ public class BoFactory {
             case CUSTOMER:return (T) new CustomerBoImpl();
             case ITEM:return (T)new ItemBoImpl();
             case ORDER_DETAILS : return (T) new OrderDetailsBoImpl();
+            case ORDERS:return (T) new OrderBoImpl();
         }
         return null;
     }

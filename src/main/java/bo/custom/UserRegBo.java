@@ -15,4 +15,6 @@ public interface UserRegBo extends SuperBo {
     boolean isValidPassword(String password);
 
     List<UserDto> allUsers() throws SQLException, ClassNotFoundException;
+
+    public String generateID();
 }

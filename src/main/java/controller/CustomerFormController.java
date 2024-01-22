@@ -62,8 +62,7 @@ public class CustomerFormController {
     @FXML
     private TreeTableColumn<?, ?> colOption;
 
-    CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
-    CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
+        CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
 
     public void initialize() {
@@ -186,21 +185,7 @@ public class CustomerFormController {
 
 
     public void generateId() {
-        try {
-            CustomerDto customerDto = customerDao.lastItem();
-            if (customerDto != null) {
-                String orderId = customerDto.getCustomerId();
-                int num = Integer.parseInt(orderId.split("CU")[1]);
-                num++;
-                lblId.setText(String.format("CU%03d", num));
-            } else {
-                lblId.setText("CU001");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+       lblId.setText(customerBo.generateID());
     }
 
     public void addCustomerBtnOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

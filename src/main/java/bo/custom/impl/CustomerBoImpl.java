@@ -62,5 +62,23 @@ public class CustomerBoImpl implements CustomerBo {
         ));
     }
 
+    public String generateID(){
+        try {
+            CustomerDto customerDto = customerDao.lastItem();
+            if (customerDto != null) {
+                String orderId = customerDto.getCustomerId();
+                int num = Integer.parseInt(orderId.split("CU")[1]);
+                num++;
+                return String.format("CU%03d", num);
+            } else {
+                return "CU001";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

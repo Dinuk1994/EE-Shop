@@ -3133,3 +3133,7 @@ X
 +src/main/java/bo/custom/OrderDetailsBo.java,4\9\497021ea6d5d163964988848408dc12beaed8aa0
 d
 4src/main/java/bo/custom/impl/OrderDetailsBoImpl.java,8\8\88a8de834924e254fc7a7c4120699646481b0cc3
+T
+$src/main/java/bo/custom/OrderBo.java,f\4\f4324142a116e27db58e2a81f2d0e4b8da1cab2a
+]
+-src/main/java/bo/custom/impl/OrderBoImpl.java,3\b\3b7ed7c5f9386b52fcbd273d709e57a03acfa6d2

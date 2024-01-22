@@ -106,4 +106,22 @@ public class UserRegBoImpl implements UserRegBo {
         return hasDigit && hasLetter && hasSymbol;
     }
 
+    public String generateID(){
+        try {
+            UserDto userDto=userRegDao.lastUser();
+            if (userDto!=null){
+                String userId= userDto.getUserId();
+                int num=Integer.parseInt(userId.split("U")[1]);
+                num++;
+                return String.format("U%03d",num);
+            }else{
+               return "U001";
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
