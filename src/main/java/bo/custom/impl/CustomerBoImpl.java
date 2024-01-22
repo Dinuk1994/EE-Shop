@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerBoImpl implements CustomerBo {
-    CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.ITEM);
+    CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
 
 
     @Override
