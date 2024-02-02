@@ -1,9 +1,6 @@
 package dao;
 
-import dao.custom.impl.LoginDaoImpl;
-import dao.custom.impl.NewOrderDaoImpl;
-import dao.custom.impl.UserRegDaoImpl;
-import dao.custom.impl.UserUpdateDaoImpl;
+import dao.custom.impl.*;
 import dao.util.DaoType;
 
 public class DaoFactory {
@@ -21,7 +18,11 @@ public class DaoFactory {
             case USER:return (T)new UserRegDaoImpl();
             case LOGIN:return (T)new LoginDaoImpl();
             case UPDATE:return (T)new UserUpdateDaoImpl();
-            case ITEM:return (T)new NewOrderDaoImpl();
+            case ITEM:return (T)new ItemdaoImpl();
+            case ORDER:return (T)new OrdersDaoImpl();
+            case CUSTOMER:return (T)new CustomerDaoImpl();
+            case ORDER_DETAILS:return (T)new OrderDetailsDaoImpl();
+
         }
         return null;
     }

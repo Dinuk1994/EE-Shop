@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="pane5" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDashboardFormController">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0" layoutX="-1.0" layoutY="-2.0" pickOnBounds="true">
@@ -23,12 +22,12 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="90.0" layoutY="234.0" onAction="#addNewItemsBtnOnAction" prefHeight="69.0" prefWidth="220.0" style="-fx-background-color: #207599; -fx-background-radius: 15px;" text="Add New Items" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="90.0" layoutY="234.0" onAction="#addNewCustomerBtnOnAction" prefHeight="69.0" prefWidth="220.0" style="-fx-background-color: #207599; -fx-background-radius: 15px;" text="Add New Customer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="90.0" layoutY="351.0" onAction="#inventoryBtnOnAction" prefHeight="69.0" prefWidth="220.0" style="-fx-background-color: #207599; -fx-background-radius: 15px;" text="Inventory" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="90.0" layoutY="351.0" onAction="#addNewItemBtnOnAction" prefHeight="69.0" prefWidth="220.0" style="-fx-background-color: #207599; -fx-background-radius: 15px;" text="Add New Item" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
