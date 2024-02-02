@@ -11,6 +11,7 @@ import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.util.BoType;
 import dao.util.DaoType;
+import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
 import dto.tm.UserTm;
@@ -28,6 +29,10 @@ import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -223,6 +228,18 @@ public class CustomerFormController {
         stage.setTitle("New Customer Form");
         stage.setResizable(false);
         stage.show();
+    }
+
+    public void reportBtnOnAction(ActionEvent actionEvent) {
+        try {
+            JasperDesign design = JRXmlLoader.load("src/main/resources/reports/Customer_Reports.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException | SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 

@@ -1,3 +1,7 @@
 
-g	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8§÷ÒŒÐ1
-m	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¾¥Ø8¨÷ÒŒÐ1
+g	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8—•¬’Ó1
+g	java:S112y"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8—•¬’Ó1
+g	java:S112{"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8—•¬’Ó1
+m	java:S117;"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¾¥Ø8˜•¬’Ó1
+b
+java:S2147z"ECombine this catch with the one at line 120, which has the same body.(ýàÑÎ8§•¬’Ó1
