@@ -32,18 +32,6 @@ public class CustomerDaoImpl implements CustomerDao {
         transaction.commit();
         session.close();
         return true;
-
-
-//        String sql = "INSERT INTO Customer VALUES (?,?,?,?,?)";
-//        return CrudUtil.execute(sql,
-//                entity.getCustomerId(),
-//                entity.getCustomerName(),
-//                entity.getCustomerAddress(),
-//                entity.getContactNumber(),
-//                entity.getCustomerEmail()
-//        );
-
-
     }
 
     @Override
@@ -53,15 +41,40 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
-       String sql="UPDATE Customer SET customerName=?, customerAddress=?, customerContactNumber=?, customerEmail=? WHERE customerID=? ";
-       return CrudUtil.execute(sql,entity.getCustomerName(),entity.getCustomerAddress(),entity.getCustomerContactNumber(),entity.getCustomerEmail(),entity.getCustomerId());
+        Configuration configuration = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Customer.class);
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Customer customer = session.find(Customer.class, entity.getCustomerId());
+        customer.setCustomerName(entity.getCustomerName());
+        customer.setCustomerAddress(entity.getCustomerAddress());
+        customer.setCustomerEmail(entity.getCustomerEmail());
+        customer.setCustomerContactNumber(entity.getCustomerContactNumber());
+
+        session.save(customer);
+        transaction.commit();
+        return true;
     }
 
     @Override
 
     public boolean delete(String entity) throws SQLException, ClassNotFoundException {
-        String sql="DELETE FROM Customer WHERE customerID=?";
-        return CrudUtil.execute(sql,entity);
+        Configuration configuration = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Customer.class);
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Customer customer = session.find(Customer.class, entity);
+        session.delete(customer);
+        transaction.commit();
+        return true;
+
     }
 
 
