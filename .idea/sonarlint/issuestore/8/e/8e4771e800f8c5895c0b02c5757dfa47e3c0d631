@@ -35,3 +35,10 @@ c
 java:S2147å"ECombine this catch with the one at line 227, which has the same body.(ıàÑÎ8ºúßìÏ1
 U
 java:S1172ì"2Remove this unused method parameter "actionEvent".(Ò ÿÛùÿÿÿÿ8¼úßìÏ1
+M
+java:S1128"+Remove this unused import 'dao.DaoFactory'.(ÕèÇ‡úÿÿÿÿ8™ëÜøÖ1
+O
+java:S1128"2Remove this unused import 'dao.custom.UserRegDao'.(˜Íİ¨8™ëÜøÖ1
+J
+java:S1128
+"-Remove this unused import 'dao.util.DaoType'.(ô¼8™ëÜøÖ1

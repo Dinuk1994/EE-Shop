@@ -23,7 +23,7 @@ public class UserRegDaoImpl implements UserRegDao {
 
     @Override
     public boolean update(User entity) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE User SET name=?, email=?, address=?, contactNumber=?, newPassword=? WHERE userId=?";
+        String sql = "UPDATE User SET name=?, customerEmail=?, customerAddress=?, contactNumber=?, newPassword=? WHERE userId=?";
         return CrudUtil.execute(sql,entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getNewPassword(),entity.getUserId());
     }
 

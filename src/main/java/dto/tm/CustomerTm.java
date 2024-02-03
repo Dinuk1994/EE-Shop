@@ -13,9 +13,10 @@ import lombok.*;
 public class CustomerTm extends RecursiveTreeObject<CustomerTm> {
     private String customerId;
     private String customerName;
-    private String address;
-    private int contactNumber;
-    private String email;
+    private String customerAddress;
+    private int customerContactNumber;
+    private String customerEmail;
     private JFXButton btn;
 
 }
+

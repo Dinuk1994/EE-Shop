@@ -6,6 +6,10 @@ import db.DBConnection;
 import dto.CustomerDto;
 import entity.Customer;
 import entity.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 
 import java.sql.PreparedStatement;
@@ -17,14 +21,29 @@ import java.util.List;
 public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
-        String sql = "INSERT INTO Customer VALUES (?,?,?,?,?)";
-        return CrudUtil.execute(sql,
-                entity.getCustomerId(),
-                entity.getCustomerName(),
-                entity.getAddress(),
-                entity.getContactNumber(),
-                entity.getEmail()
-        );
+        Configuration configuration = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(Customer.class);
+
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(entity);
+        transaction.commit();
+        session.close();
+        return true;
+
+
+//        String sql = "INSERT INTO Customer VALUES (?,?,?,?,?)";
+//        return CrudUtil.execute(sql,
+//                entity.getCustomerId(),
+//                entity.getCustomerName(),
+//                entity.getCustomerAddress(),
+//                entity.getContactNumber(),
+//                entity.getCustomerEmail()
+//        );
+
+
     }
 
     @Override
@@ -35,7 +54,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
        String sql="UPDATE Customer SET customerName=?, customerAddress=?, customerContactNumber=?, customerEmail=? WHERE customerID=? ";
-       return CrudUtil.execute(sql,entity.getCustomerName(),entity.getAddress(),entity.getContactNumber(),entity.getEmail(),entity.getCustomerId());
+       return CrudUtil.execute(sql,entity.getCustomerName(),entity.getCustomerAddress(),entity.getCustomerContactNumber(),entity.getCustomerEmail(),entity.getCustomerId());
     }
 
     @Override

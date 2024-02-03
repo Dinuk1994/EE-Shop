@@ -50,7 +50,7 @@
             <artifactId>jasperreports</artifactId>
             <version>6.20.5</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy -->
+        <!-- https://mvnrepository.com/ artifact/org.codehaus.groovy/groovy -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>

@@ -7,14 +7,10 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import dao.DaoFactory;
-import dao.custom.CustomerDao;
 import dao.util.BoType;
-import dao.util.DaoType;
 import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
-import dto.tm.UserTm;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -76,9 +72,9 @@ public class CustomerFormController {
         loadCustomerTable();
 
         colCustomerName.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerName"));
-        colAddress.setCellValueFactory(new TreeItemPropertyValueFactory<>("Address"));
-        colContactNumber.setCellValueFactory(new TreeItemPropertyValueFactory<>("contactNumber"));
-        colEmail.setCellValueFactory(new TreeItemPropertyValueFactory<>("contactNumber"));
+        colAddress.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerAddress"));
+        colContactNumber.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerContactNumber"));
+        colEmail.setCellValueFactory(new TreeItemPropertyValueFactory<>("customerEmail"));
         colOption.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observableValue,customerTmTreeItem,newValue) -> setData(newValue));
@@ -88,9 +84,9 @@ public class CustomerFormController {
         if (newValue!=null){
             lblId.setText(newValue.getValue().getCustomerId());
             txtCustomerName.setText(newValue.getValue().getCustomerName());
-            txtAddress.setText(newValue.getValue().getAddress());
-            txtContactNumber.setText(String.valueOf(newValue.getValue().getContactNumber()));
-            txtEmail.setText(newValue.getValue().getEmail());
+            txtAddress.setText(newValue.getValue().getCustomerAddress());
+            txtContactNumber.setText(String.valueOf(newValue.getValue().getCustomerContactNumber()));
+            txtEmail.setText(newValue.getValue().getCustomerEmail());
         }
     }
 
@@ -107,9 +103,9 @@ public class CustomerFormController {
                     CustomerTm customerTm = new CustomerTm(
                             dto.getCustomerId(),
                             dto.getCustomerName(),
-                            dto.getAddress(),
-                            dto.getContactNumber(),
-                            dto.getEmail(),
+                            dto.getCustomerAddress(),
+                            dto.getCustomerContactNumber(),
+                            dto.getCustomerEmail(),
                             btn
                     );
                     btn.setOnAction(actionEvent -> {

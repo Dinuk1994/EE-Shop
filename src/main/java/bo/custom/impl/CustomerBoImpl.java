@@ -20,9 +20,9 @@ public class CustomerBoImpl implements CustomerBo {
         return customerDao.save(new Customer(
                 customerDto.getCustomerId(),
                 customerDto.getCustomerName(),
-                customerDto.getAddress(),
-                customerDto.getContactNumber(),
-                customerDto.getEmail()
+                customerDto.getCustomerAddress(),
+                customerDto.getCustomerContactNumber(),
+                customerDto.getCustomerEmail()
 
         ));
     }
@@ -41,9 +41,9 @@ public class CustomerBoImpl implements CustomerBo {
             customerDtos.add(new CustomerDto(
                     customer.getCustomerId(),
                     customer.getCustomerName(),
-                    customer.getAddress(),
-                    customer.getContactNumber(),
-                    customer.getEmail()
+                    customer.getCustomerAddress(),
+                    customer.getCustomerContactNumber(),
+                    customer.getCustomerEmail()
 
             ));
         }
@@ -55,9 +55,9 @@ public class CustomerBoImpl implements CustomerBo {
         return customerDao.update(new Customer(
                 customerDto.getCustomerId(),
                 customerDto.getCustomerName(),
-                customerDto.getAddress(),
-                customerDto.getContactNumber(),
-                customerDto.getEmail()
+                customerDto.getCustomerAddress(),
+                customerDto.getCustomerContactNumber(),
+                customerDto.getCustomerEmail()
 
         ));
     }
