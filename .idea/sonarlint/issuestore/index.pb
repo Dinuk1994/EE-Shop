@@ -3137,3 +3137,5 @@ $src/main/java/bo/custom/OrderBo.java,f\4\f4324142a116e27db58e2a81f2d0e4b8da1ca
 -src/main/java/bo/custom/impl/OrderBoImpl.java,3\b\3b7ed7c5f9386b52fcbd273d709e57a03acfa6d2
 Y
 )src/main/java/dao/util/HibernateUtil.java,e\a\eaca33c06fde41d95c0977c988aecc4139aa0a69
+Y
+)src/main/java/entity/OrderDetailsKey.java,d\8\d8bf35ddbede29bf962753bff8b727d827e0db2f
