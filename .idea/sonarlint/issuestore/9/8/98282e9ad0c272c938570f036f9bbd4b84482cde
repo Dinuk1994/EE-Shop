@@ -1,5 +1,19 @@
 
-l
-java:S2095;"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Í½ïÆĞ1
+Q
+java:S3740?"/Provide the parametrized type for this generic.(¾èøøÿÿÿÿ8‘¨ò§×1
+Q
+java:S3740H"/Provide the parametrized type for this generic.(êàÉÿÿÿÿÿ8’¨ò§×1
+y
+java:S1488@"\Immediately return this expression instead of assigning it to the temporary variable "list".(±È±ß8’¨ò§×1
 R
-java:S1128"0Remove this unused import 'dao.custom.LoginDao'.(¨şÖùÿÿÿÿ8›¾ïÆĞ1
+java:S1128"0Remove this unused import 'dao.custom.LoginDao'.(¨şÖùÿÿÿÿ8öÄó§×1
+P
+java:S1128".Remove this unused import 'dao.util.CrudUtil'.(ØÒñ¿üÿÿÿÿ8öÄó§×1
+I
+java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8÷Äó§×1
+Y
+java:S1128"7Remove this unused import 'java.sql.PreparedStatement'.(òÄ™ƒÿÿÿÿÿ8÷Äó§×1
+K
+java:S1128"/Remove this unused import 'java.sql.ResultSet'.(ˆóÚw8÷Äó§×1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8÷Äó§×1

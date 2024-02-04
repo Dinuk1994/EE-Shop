@@ -3,9 +3,13 @@ package dao.custom.impl;
 import dao.custom.LoginDao;
 import dao.custom.UserRegDao;
 import dao.util.CrudUtil;
+import dao.util.HibernateUtil;
 import db.DBConnection;
 import dto.UserDto;
 import entity.User;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,61 +17,72 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRegDaoImpl implements UserRegDao {
+public class
+UserRegDaoImpl implements UserRegDao {
     @Override
     public boolean save(User entity) throws SQLException, ClassNotFoundException {
-        String sql="INSERT INTO User VALUES(?,?,?,?,?,?)";
-        return CrudUtil.execute(sql,entity.getUserId(),entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getNewPassword());
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(entity);
+        transaction.commit();
+        session.close();
+        return true;
+
     }
 
 
     @Override
     public boolean update(User entity) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE User SET name=?, customerEmail=?, customerAddress=?, contactNumber=?, newPassword=? WHERE userId=?";
-        return CrudUtil.execute(sql,entity.getName(),entity.getEmail(),entity.getAddress(),entity.getContactNumber(),entity.getNewPassword(),entity.getUserId());
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        User user = session.find(User.class, entity.getUserId());
+        user.setAddress(entity.getAddress());
+        user.setName(entity.getName());
+        user.setEmail(entity.getEmail());
+        user.setNewPassword(entity.getNewPassword());
+        user.setContactNumber(entity.getContactNumber());
+
+        session.save(user);
+        transaction.commit();
+        return true;
     }
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        String sql="DELETE FROM User WHERE userId = ?";
-        return CrudUtil.execute(sql,id);
-
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        User user = session.find(User.class, id);
+        session.delete(user);
+        transaction.commit();
+        return true;
     }
 
     @Override
     public List<User> getAll() throws SQLException, ClassNotFoundException {
-        List<User> userList=new ArrayList<>();
-        String sql="SELECT * FROM User";
-        ResultSet resultset = CrudUtil.execute(sql);
-        while (resultset.next()){
-            userList.add(new User(
-                    resultset.getString(1),
-                    resultset.getString(2),
-                    resultset.getString(3),
-                    resultset.getString(4),
-                    resultset.getInt(5),
-                    resultset.getString(6)
-            ));
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM User");
+        List<User> list = query.list();
 
-        }
-        return userList;
+        return list;
     }
 
     @Override
     public UserDto lastUser() throws SQLException, ClassNotFoundException {
-        String sql="SELECT * FROM User ORDER BY UserID DESC LIMIT 1";
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()){
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("SELECT u FROM User u ORDER BY u.userId DESC");
+        query.setMaxResults(1);
+        User user = (User) query.uniqueResult();
+        if (user!=null){
             return new UserDto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getInt(5),
-                    resultSet.getString(6)
+                    user.getUserId(),
+                    user.getAddress(),
+                    user.getContactNumber(),
+                    user.getEmail(),
+                    user.getName(),
+                    user.getNewPassword()
             );
         }
-        return null;
+
+       return null;
     }
 }

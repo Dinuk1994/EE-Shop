@@ -97,7 +97,7 @@ public class UserAcountUpdateFormController {
 
     @FXML
     void updateBtnOnAction(ActionEvent event) {
-        UserDto userDto=new UserDto(lblId.getText(),txtName.getText(),txtEmail.getText(),txtAddress.getText(),Integer.parseInt(txtContactNumber.getText()),txtPassword.getText());
+        UserDto userDto=new UserDto(lblId.getText(),txtAddress.getText(),Integer.parseInt(txtContactNumber.getText()),txtEmail.getText(),txtName.getText(),txtPassword.getText());
         if (userUpdateBo.isValidPassword(txtPassword.getText())){
            boolean isUpdate= userUpdateBo.isUpdate(userDto);
            if (isUpdate){

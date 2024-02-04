@@ -9,7 +9,8 @@ public class DBConnection {
     private Connection connection;
     private DBConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/EESHOP", "root", "dindragon8");
+        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/EESHOP2?createDatabaseIfNotExist=true", "root", "dindragon8");
+
     }
     public static DBConnection getInstance() throws SQLException, ClassNotFoundException {
         return dbConnection!=null?dbConnection:(dbConnection=new DBConnection());

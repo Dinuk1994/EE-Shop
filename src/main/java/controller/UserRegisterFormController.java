@@ -185,7 +185,7 @@ public class UserRegisterFormController {
 
     public void regBtnOnAction(javafx.event.ActionEvent actionEvent)  {
         try {
-            UserDto userDto=new UserDto(lblId.getText(), txtName.getText(),txtEmail.getText(),txtAddress.getText(),Integer.parseInt(txtNumber.getText()),txtPassword.getText());
+            UserDto userDto=new UserDto(lblId.getText(),txtAddress.getText(),Integer.parseInt(txtNumber.getText()),txtEmail.getText(),txtName.getText(),txtPassword.getText());
                         boolean isSaved = userRegBo.saveUser(userDto);
             if (isSaved){
                 new Alert(Alert.AlertType.INFORMATION,"User Registered").show();
@@ -216,7 +216,7 @@ public class UserRegisterFormController {
 
     public void updateBtnOnAction(ActionEvent actionEvent)  {
         try {
-            UserDto userDto=new UserDto(lblId.getText(), txtName.getText(),txtEmail.getText(),txtAddress.getText(),Integer.parseInt(txtNumber.getText()),txtPassword.getText());
+            UserDto userDto=new UserDto(lblId.getText(),txtAddress.getText(),Integer.parseInt(txtNumber.getText()),txtEmail.getText(),txtName.getText(),txtPassword.getText());
             boolean isUpdate=userRegBo.updateUser(userDto);
             if (isUpdate){
                 new Alert(Alert.AlertType.INFORMATION,"User Details Updated").show();

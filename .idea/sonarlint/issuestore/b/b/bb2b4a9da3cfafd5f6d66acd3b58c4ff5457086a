@@ -1,7 +1,8 @@
 
 l
-java:S2095&"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Üúı÷Ï1
+java:S2095'"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Ø¿¥…×1
 H
-java:S1168 "+Return an empty collection instead of null.(¥¹ï8Şúı÷Ï1
+java:S1168 "+Return an empty collection instead of null.(¥¹ï8İ¿¥…×1
+L	java:S106)"+Replace this use of System.out by a logger.(à£ñòüÿÿÿÿ8¸•Ùƒ×1
 P
-java:S1128".Remove this unused import 'dao.util.CrudUtil'.(ØÒñ¿üÿÿÿÿ8ßúı÷Ï1
+java:S1128".Remove this unused import 'dao.util.CrudUtil'.(ØÒñ¿üÿÿÿÿ8à¿¥…×1

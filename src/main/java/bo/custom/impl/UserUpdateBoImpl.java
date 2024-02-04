@@ -18,10 +18,10 @@ public class UserUpdateBoImpl implements UserUpdateBo {
     public boolean isFound(UserDto userDto) throws SQLException, ClassNotFoundException {
         return userUpdateDao.searchUser(new User(
                 userDto.getUserId(),
-                userDto.getName(),
-                userDto.getEmail(),
                 userDto.getAddress(),
                 userDto.getContactNumber(),
+                userDto.getEmail(),
+                userDto.getName(),
                 userDto.getPrimaryPassword()
         ));
     }
@@ -33,13 +33,14 @@ public class UserUpdateBoImpl implements UserUpdateBo {
         for (User user:entityList) {
             dtoList.add(new UserDto(
                     user.getUserId(),
-                    user.getName(),
-                    user.getEmail(),
                     user.getAddress(),
                     user.getContactNumber(),
+                    user.getEmail(),
+                    user.getName(),
                     user.getNewPassword()
             ));
         }
+
         return dtoList;
     }
 
@@ -47,10 +48,10 @@ public class UserUpdateBoImpl implements UserUpdateBo {
         try {
             return userUpdateDao.update(new User(
                     userDto.getUserId(),
-                    userDto.getName(),
-                    userDto.getEmail(),
                     userDto.getAddress(),
                     userDto.getContactNumber(),
+                    userDto.getEmail(),
+                    userDto.getName(),
                     userDto.getPrimaryPassword()
             ));
         } catch (SQLException e) {

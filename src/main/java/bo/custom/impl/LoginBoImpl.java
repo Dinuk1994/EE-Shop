@@ -16,10 +16,10 @@ public class LoginBoImpl implements LoginBo {
     public boolean isFound(UserDto userDto) throws SQLException, ClassNotFoundException {
         return loginDao.searchUser(new User(
                 userDto.getUserId(),
-                userDto.getName(),
-                userDto.getEmail(),
                 userDto.getAddress(),
                 userDto.getContactNumber(),
+                userDto.getEmail(),
+                userDto.getName(),
                 userDto.getPrimaryPassword()
         ));
 

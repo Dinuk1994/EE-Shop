@@ -2,6 +2,7 @@ package dao.custom.impl;
 
 import dao.custom.CustomerDao;
 import dao.util.CrudUtil;
+import dao.util.HibernateUtil;
 import db.DBConnection;
 import dto.CustomerDto;
 import entity.Customer;
@@ -10,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
 import java.sql.PreparedStatement;
@@ -21,12 +23,7 @@ import java.util.List;
 public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
-        Configuration configuration = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Customer.class);
-
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         session.save(entity);
         transaction.commit();
@@ -41,12 +38,8 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
-        Configuration configuration = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Customer.class);
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         Customer customer = session.find(Customer.class, entity.getCustomerId());
         customer.setCustomerName(entity.getCustomerName());
@@ -62,12 +55,7 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
 
     public boolean delete(String entity) throws SQLException, ClassNotFoundException {
-        Configuration configuration = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Customer.class);
-
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.openSession();
+        Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
 
         Customer customer = session.find(Customer.class, entity);
@@ -81,36 +69,40 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public List<Customer> getAll() throws SQLException, ClassNotFoundException {
-        List<Customer> customerList=new ArrayList<>();
-        String sql="SELECT * FROM Customer";
-        ResultSet resultSet = CrudUtil.execute(sql);
-        while (resultSet.next()){
-            customerList.add(new Customer(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getInt(4),
-                    resultSet.getString(5)
-            ));
-        }
-        return  customerList;
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Customer");
+        List<Customer> list = query.list();
+
+//        List<Customer> customerList=new ArrayList<>();
+//        String sql="SELECT * FROM Customer";
+//        ResultSet resultSet = CrudUtil.execute(sql);
+//        while (resultSet.next()){
+//            customerList.add(new Customer(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getString(3),
+//                    resultSet.getInt(4),
+//                    resultSet.getString(5)
+//            ));
+//        }
+        return  list;
     }
 
 
     @Override
     public CustomerDto lastItem() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM customer ORDER BY CustomerID DESC LIMIT 1";
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        ResultSet resultSet = pstm.executeQuery();
-        if (resultSet.next()) {
-            return new CustomerDto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getInt(4),
-                    resultSet.getString(5)
-            );
-        }
+//        String sql = "SELECT * FROM customer ORDER BY CustomerID DESC LIMIT 1";
+//        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+//        ResultSet resultSet = pstm.executeQuery();
+//        if (resultSet.next()) {
+//            return new CustomerDto(
+//                    resultSet.getString(1),
+//                    resultSet.getString(2),
+//                    resultSet.getString(3),
+//                    resultSet.getInt(4),
+//                    resultSet.getString(5)
+//            );
+//        }
 
         return null;
     }

@@ -20,10 +20,10 @@ public class UserRegBoImpl implements UserRegBo {
         if (isValidPassword(userDto.getPrimaryPassword())) {
             return userRegDao.save(new User(
                     userDto.getUserId(),
-                    userDto.getName(),
-                    userDto.getEmail(),
                     userDto.getAddress(),
                     userDto.getContactNumber(),
+                    userDto.getEmail(),
+                    userDto.getName(),
                     userDto.getPrimaryPassword()
             ));
         } else {
@@ -39,10 +39,10 @@ public class UserRegBoImpl implements UserRegBo {
             try {
                 return userRegDao.update(new User(
                         userDto.getUserId(),
-                        userDto.getName(),
-                        userDto.getEmail(),
                         userDto.getAddress(),
                         userDto.getContactNumber(),
+                        userDto.getEmail(),
+                        userDto.getName(),
                         userDto.getPrimaryPassword()
                 ));
             } catch (Exception e) {
@@ -62,19 +62,20 @@ public class UserRegBoImpl implements UserRegBo {
 
     @Override
     public List<UserDto> allUsers() throws SQLException, ClassNotFoundException {
-        List<User> entityList=userRegDao.getAll();
-        List<UserDto> dtoList=new ArrayList<>();
-        for (User user:entityList) {
-            dtoList.add(new UserDto(
-                    user.getUserId(),
-                    user.getName(),
-                    user.getEmail(),
-                    user.getAddress(),
-                    user.getContactNumber(),
-                    user.getNewPassword()
-            ));
-        }
-        return dtoList;
+
+            List<User> entityList=userRegDao.getAll();
+            List<UserDto> dtoList=new ArrayList<>();
+            for (User user:entityList) {
+                dtoList.add(new UserDto(
+                        user.getUserId(),
+                        user.getAddress(),
+                        user.getContactNumber(),
+                        user.getEmail(),
+                        user.getName(),
+                        user.getNewPassword()
+                ));
+            }
+           return dtoList;
 
     }
 

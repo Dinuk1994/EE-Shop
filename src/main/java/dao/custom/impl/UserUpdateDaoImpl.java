@@ -37,9 +37,9 @@ public class UserUpdateDaoImpl implements UserUpdateDao {
             userList.add(new User(
                resultSet.getString(1),
                resultSet.getString(2),
-               resultSet.getString(3),
+               resultSet.getInt(3),
                resultSet.getString(4),
-               resultSet.getInt(5),
+               resultSet.getString(5),
                resultSet.getString(6)
             ));
         }

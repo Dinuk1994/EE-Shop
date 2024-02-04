@@ -1,9 +1,21 @@
 
-t
-java:S1192"RDefine a constant instead of duplicating this literal "hibernate.cfg.xml" 3 times.(ÌË»ûÿÿÿÿ8”ê…ÿÖ1
-g
-java:S20951"EUse try-with-resources or close this "Session" in a "finally" clause.(´Ï‚‘ùÿÿÿÿ8£ê…ÿÖ1
-l
-java:S2095g"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8£ê…ÿÖ1
-g
-java:S2095F"EUse try-with-resources or close this "Session" in a "finally" clause.(´Ï‚‘ùÿÿÿÿ8®™†ÿÖ1
+Q
+java:S3740I"/Provide the parametrized type for this generic.(÷îÿÿÿÿÿ8«ºÊƒ×1
+~
+java:S1488J"\Immediately return this expression instead of assigning it to the temporary variable "list".(ÄÕÑèøÿÿÿÿ8ıõÊƒ×1
+]	java:S125L"<This block of commented-out lines of code should be removed.(•œú“úÿÿÿÿ8½ºÊƒ×1
+X	java:S125^"<This block of commented-out lines of code should be removed.(Ó³€ª8˜ÿ¢¢×1
+P
+java:S1128".Remove this unused import 'dao.util.CrudUtil'.(ØÒñ¿üÿÿÿÿ8ã¶Ê†×1
+I
+java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8˜ÿ¢¢×1
+[
+java:S1128"9Remove this unused import 'org.hibernate.SessionFactory'.(ñ¦«¬şÿÿÿÿ8ä¶Ê†×1
+Y
+java:S1128"<Remove this unused import 'org.hibernate.cfg.Configuration'.(ö¬ä8ä¶Ê†×1
+Y
+java:S1128"7Remove this unused import 'java.sql.PreparedStatement'.(òÄ™ƒÿÿÿÿÿ8™ÿ¢¢×1
+K
+java:S1128"/Remove this unused import 'java.sql.ResultSet'.(ˆóÚw8™ÿ¢¢×1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ä¶Ê†×1
