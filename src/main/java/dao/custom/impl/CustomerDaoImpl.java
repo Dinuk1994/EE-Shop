@@ -65,44 +65,30 @@ public class CustomerDaoImpl implements CustomerDao {
 
     }
 
-
-
     @Override
     public List<Customer> getAll() throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("FROM Customer");
         List<Customer> list = query.list();
-
-//        List<Customer> customerList=new ArrayList<>();
-//        String sql="SELECT * FROM Customer";
-//        ResultSet resultSet = CrudUtil.execute(sql);
-//        while (resultSet.next()){
-//            customerList.add(new Customer(
-//                    resultSet.getString(1),
-//                    resultSet.getString(2),
-//                    resultSet.getString(3),
-//                    resultSet.getInt(4),
-//                    resultSet.getString(5)
-//            ));
-//        }
         return  list;
     }
 
 
     @Override
     public CustomerDto lastItem() throws SQLException, ClassNotFoundException {
-//        String sql = "SELECT * FROM customer ORDER BY CustomerID DESC LIMIT 1";
-//        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-//        ResultSet resultSet = pstm.executeQuery();
-//        if (resultSet.next()) {
-//            return new CustomerDto(
-//                    resultSet.getString(1),
-//                    resultSet.getString(2),
-//                    resultSet.getString(3),
-//                    resultSet.getInt(4),
-//                    resultSet.getString(5)
-//            );
-//        }
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("SELECT u FROM Customer u ORDER BY u.customerId DESC");
+        query.setMaxResults(1);
+        Customer customer = (Customer) query.uniqueResult();
+        if (customer!=null){
+            return new CustomerDto(
+                    customer.getCustomerId(),
+                    customer.getCustomerName(),
+                    customer.getCustomerAddress(),
+                    customer.getCustomerContactNumber(),
+                    customer.getCustomerEmail()
+            );
+        }
 
         return null;
     }
