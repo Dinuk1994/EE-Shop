@@ -2,8 +2,12 @@ package dao.custom.impl;
 
 import dao.custom.LoginDao;
 import dao.util.CrudUtil;
+import dao.util.HibernateUtil;
 import db.DBConnection;
 import entity.User;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,16 +38,16 @@ public class LoginDaoImpl implements LoginDao {
 
     @Override
     public boolean searchUser(User entity) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM User WHERE email=? AND NewPassword=?";
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("FROM User WHERE email = :email AND newPassword = :newPassword");
 
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setString(1,entity.getEmail());
-        System.out.println(entity.getEmail());
-        pstm.setString(2,entity.getNewPassword());
+        query.setParameter("email",entity.getEmail());
+        query.setParameter("newPassword",entity.getNewPassword());
+        User user = (User) query.uniqueResult();
+        transaction.commit();
+        session.close();
+        return user!=null;
 
-        ResultSet resultSet = pstm.executeQuery();
-        return resultSet.next();
     }
-
-
 }

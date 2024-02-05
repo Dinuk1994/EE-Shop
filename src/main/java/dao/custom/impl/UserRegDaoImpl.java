@@ -27,9 +27,7 @@ UserRegDaoImpl implements UserRegDao {
         transaction.commit();
         session.close();
         return true;
-
     }
-
 
     @Override
     public boolean update(User entity) throws SQLException, ClassNotFoundException {
