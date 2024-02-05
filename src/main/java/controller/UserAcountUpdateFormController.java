@@ -48,21 +48,16 @@ public class UserAcountUpdateFormController {
         txtEmail.setText(email);
         txtPassword.setText(password);
 
-
-        String userEmail=txtEmail.getText();
-        String currentPassword=txtPassword.getText();
-
-
         UserDto userDto=new UserDto();
-        userDto.setEmail(userEmail);
-        userDto.setPrimaryPassword(currentPassword);
+        userDto.setEmail(email);
+        userDto.setPrimaryPassword(password);
 
 
         if (userUpdateBo.isFound(userDto)){
             List<UserDto> list=userUpdateBo.allUsers();
 
             for (UserDto dto:list) {
-               if (dto.getEmail().equals(userEmail)){
+               if (dto.getEmail().equals(email)){
                    lblId.setText(dto.getUserId());
                    txtName.setText(dto.getName());
                    txtAddress.setText(dto.getAddress());

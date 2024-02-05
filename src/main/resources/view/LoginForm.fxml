@@ -29,11 +29,6 @@
             <Font size="19.0" />
          </font>
       </JFXTextField>
-      <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="488.0" onAction="#adminLoginBtnOnAction" prefHeight="57.0" prefWidth="166.0" style="-fx-background-color: #605DCA;" text="Admin Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </JFXButton>
       <Label fx:id="lblTime" alignment="CENTER" layoutX="1057.0" layoutY="71.0" prefHeight="64.0" prefWidth="166.0" text="HH:mm:ss">
          <font>
             <Font name="System Bold Italic" size="22.0" />
@@ -44,7 +39,12 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="563.0" onAction="#userLoginBtnOnAction" prefHeight="57.0" prefWidth="166.0" style="-fx-background-color: #605DCA;" text="User Login" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="537.0" layoutY="494.0" onAction="#userLoginBtnOnAction" prefHeight="57.0" prefWidth="166.0" style="-fx-background-color: #605DCA;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="491.0" layoutY="564.0" onAction="#btnForgotPassword" prefHeight="57.0" prefWidth="259.0" text="Forgot Password ?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

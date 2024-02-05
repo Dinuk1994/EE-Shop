@@ -19,7 +19,7 @@
             <MotionBlur />
          </effect>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="496.0" layoutY="189.0" onAction="#regBtnOnAction" prefHeight="69.0" prefWidth="216.0" style="-fx-background-color: #5BCC67;" text="Register New User" textFill="#2522c6">
+      <JFXButton buttonType="RAISED" layoutX="496.0" layoutY="217.0" onAction="#regBtnOnAction" prefHeight="69.0" prefWidth="216.0" style="-fx-background-color: #5BCC67;" text="Register New User" textFill="#2522c6">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -29,7 +29,7 @@
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="496.0" layoutY="322.0" onAction="#reportsBtnOnAction" prefHeight="69.0" prefWidth="216.0" style="-fx-background-color: #5BCC67;" text="View Reports" textFill="#2522c6">
+      <JFXButton buttonType="RAISED" layoutX="496.0" layoutY="352.0" onAction="#reportsBtnOnAction" prefHeight="69.0" prefWidth="216.0" style="-fx-background-color: #5BCC67;" text="View Reports" textFill="#2522c6">
          <font>
             <Font name="System Bold" size="20.0" />
          </font></JFXButton>
@@ -44,5 +44,10 @@
             <Font name="System Bold Italic" size="22.0" />
          </font>
       </Label>
+      <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="32.0" onAction="#btnLoginFormOnAction" prefHeight="34.0" prefWidth="166.0" style="-fx-background-color: #F3B95F;" text="Login Form" textFill="#2522c6">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

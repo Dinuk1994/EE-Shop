@@ -56,4 +56,11 @@ public class AdminDashboardFormController {
     }
 
 
+    public void btnLoginFormOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) pane1.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/LoginForm.fxml"))));
+        stage.setTitle("Login Form");
+        stage.setResizable(false);
+        stage.show();
+    }
 }

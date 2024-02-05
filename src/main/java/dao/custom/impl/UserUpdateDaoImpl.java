@@ -48,6 +48,7 @@ public class UserUpdateDaoImpl implements UserUpdateDao {
         Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("FROM User");
         List<User> list = query.list();
+        transaction.commit();
         session.close();
         return list;
     }
