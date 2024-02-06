@@ -118,7 +118,7 @@ public class LoginFormController {
             String message="This mail is for security check";
             String subject="Confirmation";
             String to=txtEmail.getText();
-            String from="94dinuktdissanayake@gmail.com";
+            String from="ddt94119@gmail.com";
 
             confirmationAlert.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == ButtonType.YES) {
@@ -150,16 +150,18 @@ public class LoginFormController {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("94dinuktdissanayake@gmail.com", "D94%iNUK@1994");
+                return new PasswordAuthentication("ddt94119@gmail.com", "wjbx mltu ctji nzcc");
             }
         });
+
+
         session.setDebug(true);
 
         MimeMessage m = new MimeMessage(session);
 
         try {
-            m.setFrom(from);
-            m.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            m.setFrom(new InternetAddress(from));
+            m.setRecipient(Message.RecipientType.TO,new InternetAddress(to));
             m.setSubject(subject);
             m.setText(message);
 
