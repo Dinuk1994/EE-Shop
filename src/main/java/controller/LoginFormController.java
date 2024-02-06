@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.LoginBo;
 import com.jfoenix.controls.JFXTextField;
+import com.mysql.cj.x.protobuf.Mysqlx;
 import dao.util.BoType;
 import dto.AdminDto;
 import dto.UserDto;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -27,6 +29,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.Optional;
 import java.util.Properties;
 
 
@@ -38,6 +42,8 @@ public class LoginFormController {
     public JFXTextField txtEmail;
 
     LoginBo loginBo=BoFactory.getInstance().getBo(BoType.LOGIN);
+
+    String OTP = loginBo.generateOTP(6);
     public void initialize(){
         calculateTime();
     }
@@ -109,13 +115,14 @@ public class LoginFormController {
     public void btnForgotPassword(ActionEvent actionEvent) {
         String email = txtEmail.getText();
 
+
         if (!email.isEmpty()) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setHeaderText("Forgot Password");
             confirmationAlert.setContentText("Are you sure you want to reset the password for the email address '" + email + "'? An email will be sent to this address with further instructions.");
 
             confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
-            String message="This mail is for security check";
+            String message="Yor OTP Code for change password is " + OTP;
             String subject="Confirmation";
             String to=txtEmail.getText();
             String from="ddt94119@gmail.com";
@@ -124,8 +131,12 @@ public class LoginFormController {
                 if (buttonType == ButtonType.YES) {
                     sendPasswordResetEmail(message,subject,to,from);
                     Alert sentConfirmationAlert = new Alert(Alert.AlertType.INFORMATION, "Password reset instructions sent to '" + email + "'.");
-                    sentConfirmationAlert.show();
 
+                    sentConfirmationAlert.showAndWait().ifPresent(response ->{
+                        if (response==ButtonType.OK){
+                            otpText();
+                        }
+                    });
                 }
             });
         } else {
@@ -154,9 +165,6 @@ public class LoginFormController {
             }
         });
 
-
-        session.setDebug(true);
-
         MimeMessage m = new MimeMessage(session);
 
         try {
@@ -167,10 +175,44 @@ public class LoginFormController {
 
             Transport.send(m);
             System.out.println("Send Successfully");
+
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }
 
     }
+
+        public void otpText() {
+            LocalDateTime otpCreatedTime = LocalDateTime.now();
+
+            TextInputDialog inputDialog = new TextInputDialog();
+            inputDialog.setTitle("Input Dialog");
+            inputDialog.setHeaderText("Enter OTP Code");
+
+            Optional<String> result = inputDialog.showAndWait();
+
+            if (result.isPresent()) {
+                String userInput = result.get();
+                if (userInput.equals(OTP)){
+                    LocalDateTime currentTime = LocalDateTime.now();
+                    long minutesElapsed = ChronoUnit.MINUTES.between(otpCreatedTime, currentTime);
+                    if (minutesElapsed <= 0.5) {
+                        new Alert(Alert.AlertType.INFORMATION, "Correct OTP").show();
+                    } else {
+                        new Alert(Alert.AlertType.WARNING, "OTP has expired").show();
+                        OTP= loginBo.generateOTP(6);
+                    }
+                }else{
+                    Alert confirmationAlert = new Alert(Alert.AlertType.WARNING,"INCORRECT OTP");
+                    confirmationAlert.showAndWait().ifPresent(response->{
+                        if (response==ButtonType.OK){
+                            otpText();
+                        }
+                    });
+
+                }
+            }
+        }
 }
 
