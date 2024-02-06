@@ -2,16 +2,10 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.LoginBo;
-import bo.custom.UserRegBo;
 import com.jfoenix.controls.JFXTextField;
-import dao.DaoFactory;
-import dao.custom.LoginDao;
-import dao.custom.UserRegDao;
 import dao.util.BoType;
-import dao.util.DaoType;
 import dto.AdminDto;
 import dto.UserDto;
-import entity.User;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -26,10 +20,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Properties;
+
 
 public class LoginFormController {
     public AnchorPane pane;
@@ -116,12 +115,17 @@ public class LoginFormController {
             confirmationAlert.setContentText("Are you sure you want to reset the password for the email address '" + email + "'? An email will be sent to this address with further instructions.");
 
             confirmationAlert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+            String message="This mail is for security check";
+            String subject="Confirmation";
+            String to=txtEmail.getText();
+            String from="94dinuktdissanayake@gmail.com";
 
             confirmationAlert.showAndWait().ifPresent(buttonType -> {
                 if (buttonType == ButtonType.YES) {
-                    sendPasswordResetEmail(email);
+                    sendPasswordResetEmail(message,subject,to,from);
                     Alert sentConfirmationAlert = new Alert(Alert.AlertType.INFORMATION, "Password reset instructions sent to '" + email + "'.");
                     sentConfirmationAlert.show();
+
                 }
             });
         } else {
@@ -130,9 +134,41 @@ public class LoginFormController {
         }
     }
 
-    private void sendPasswordResetEmail(String email) {
+
+    private void sendPasswordResetEmail(String message, String subject, String to, String from) {
+
+        String host="smtp.gmail.com";
+
+        Properties properties = System.getProperties();
+
+        properties.put("mail.smtp.host",host);
+        properties.put("mail.smtp.port","465");
+        properties.put("mail.smtp.ssl.enable","true");
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.ssl.trust", "*");
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("94dinuktdissanayake@gmail.com", "D94%iNUK@1994");
+            }
+        });
+        session.setDebug(true);
+
+        MimeMessage m = new MimeMessage(session);
+
+        try {
+            m.setFrom(from);
+            m.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
+            m.setSubject(subject);
+            m.setText(message);
+
+            Transport.send(m);
+            System.out.println("Send Successfully");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
 
     }
-
 }
 
