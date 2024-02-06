@@ -134,7 +134,11 @@ public class LoginFormController {
 
                     sentConfirmationAlert.showAndWait().ifPresent(response ->{
                         if (response==ButtonType.OK){
-                            otpText();
+                            try {
+                                otpText();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     });
                 }
@@ -174,8 +178,6 @@ public class LoginFormController {
             m.setText(message);
 
             Transport.send(m);
-            System.out.println("Send Successfully");
-
 
         } catch (MessagingException e) {
             e.printStackTrace();
@@ -183,7 +185,7 @@ public class LoginFormController {
 
     }
 
-        public void otpText() {
+        public void otpText() throws IOException {
             LocalDateTime otpCreatedTime = LocalDateTime.now();
 
             TextInputDialog inputDialog = new TextInputDialog();
@@ -198,7 +200,11 @@ public class LoginFormController {
                     LocalDateTime currentTime = LocalDateTime.now();
                     long minutesElapsed = ChronoUnit.MINUTES.between(otpCreatedTime, currentTime);
                     if (minutesElapsed <= 0.5) {
-                        new Alert(Alert.AlertType.INFORMATION, "Correct OTP").show();
+                        Stage stage = (Stage) pane.getScene().getWindow();
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UpdatePasswordForm.fxml"))));
+                        stage.setTitle("Set Password Form");
+                        stage.setResizable(false);
+                        stage.show();
                     } else {
                         new Alert(Alert.AlertType.WARNING, "OTP has expired").show();
                         OTP= loginBo.generateOTP(6);
@@ -207,7 +213,11 @@ public class LoginFormController {
                     Alert confirmationAlert = new Alert(Alert.AlertType.WARNING,"INCORRECT OTP");
                     confirmationAlert.showAndWait().ifPresent(response->{
                         if (response==ButtonType.OK){
-                            otpText();
+                            try {
+                                otpText();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     });
 

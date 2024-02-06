@@ -3137,7 +3137,5 @@ $src/main/java/bo/custom/OrderBo.java,f\4\f4324142a116e27db58e2a81f2d0e4b8da1ca
 -src/main/java/bo/custom/impl/OrderBoImpl.java,3\b\3b7ed7c5f9386b52fcbd273d709e57a03acfa6d2
 Y
 )src/main/java/dao/util/HibernateUtil.java,e\a\eaca33c06fde41d95c0977c988aecc4139aa0a69
-Y
-)src/main/java/entity/OrderDetailsKey.java,d\8\d8bf35ddbede29bf962753bff8b727d827e0db2f
-O
-src/main/java/entity/Admin.java,f\d\fd7d53e096e991bc5a5e12814fd0cc2ef0cecd43
+j
+:src/main/java/controller/UpdatePasswordFormController.java,6\8\68a50057b374a43aa6f2004d84701e37fbaa5ed7
