@@ -14,6 +14,8 @@ import java.util.List;
 public class UserUpdateBoImpl implements UserUpdateBo {
     UserUpdateDao userUpdateDao= DaoFactory.getInstance().getDao(DaoType.UPDATE);
 
+
+
     @Override
     public boolean isFound(UserDto userDto) throws SQLException, ClassNotFoundException {
         return userUpdateDao.searchUser(new User(
@@ -61,10 +63,6 @@ public class UserUpdateBoImpl implements UserUpdateBo {
         }
 
     }
-
-
-
-
 
     public boolean isValidPassword(String password) {
         if (password==null||password.length()<8){

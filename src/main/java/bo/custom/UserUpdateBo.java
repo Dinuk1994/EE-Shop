@@ -10,4 +10,7 @@ public interface UserUpdateBo extends SuperBo {
 
     public boolean isFound(UserDto userDto) throws SQLException, ClassNotFoundException;
     List<UserDto> allUsers() throws SQLException, ClassNotFoundException;
+
+    public boolean isValidPassword(String password);
+    public boolean isUpdate(UserDto userDto);
 }
