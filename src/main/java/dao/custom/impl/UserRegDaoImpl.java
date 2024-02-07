@@ -1,20 +1,14 @@
 package dao.custom.impl;
 
-import dao.custom.LoginDao;
 import dao.custom.UserRegDao;
-import dao.util.CrudUtil;
 import dao.util.HibernateUtil;
-import db.DBConnection;
 import dto.UserDto;
 import entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class
@@ -37,7 +31,7 @@ UserRegDaoImpl implements UserRegDao {
         user.setAddress(entity.getAddress());
         user.setName(entity.getName());
         user.setEmail(entity.getEmail());
-        user.setNewPassword(entity.getNewPassword());
+        user.setPrimaryPassword(entity.getPrimaryPassword());
         user.setContactNumber(entity.getContactNumber());
 
         session.save(user);
@@ -77,7 +71,7 @@ UserRegDaoImpl implements UserRegDao {
                     user.getContactNumber(),
                     user.getEmail(),
                     user.getName(),
-                    user.getNewPassword()
+                    user.getPrimaryPassword()
             );
         }
 

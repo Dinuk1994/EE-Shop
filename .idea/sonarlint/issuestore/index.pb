@@ -3139,3 +3139,11 @@ Y
 )src/main/java/dao/util/HibernateUtil.java,e\a\eaca33c06fde41d95c0977c988aecc4139aa0a69
 j
 :src/main/java/controller/UpdatePasswordFormController.java,6\8\68a50057b374a43aa6f2004d84701e37fbaa5ed7
+_
+/src/main/java/dao/custom/UpdatePasswordDao.java,0\1\01ef2403a5ce98ed9ab52e172fbec87b8a5429b9
+h
+8src/main/java/dao/custom/impl/UpdatePasswordDaoImpl.java,1\0\10d22add8c5a8766a5117da20b98336c144536dc
+]
+-src/main/java/bo/custom/UpdatePasswordBo.java,8\7\872d1ead8a6fde15cda76a21d3c1872255fa90c3
+f
+6src/main/java/bo/custom/impl/UpdatePasswordBoImpl.java,0\4\041e232d36da61eb0f720eced3a81d5eeb42b0b8

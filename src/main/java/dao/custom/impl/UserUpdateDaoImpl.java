@@ -1,18 +1,13 @@
 package dao.custom.impl;
 
 import dao.custom.UserUpdateDao;
-import dao.util.CrudUtil;
 import dao.util.HibernateUtil;
-import db.DBConnection;
 import entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserUpdateDaoImpl implements UserUpdateDao {
@@ -22,18 +17,18 @@ public class UserUpdateDaoImpl implements UserUpdateDao {
     }
 
     @Override
-    public boolean update(User entity) throws SQLException, ClassNotFoundException {
+    public boolean update(User entity) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         User user = session.find(User.class, entity.getUserId());
         user.setName(entity.getName());
         user.setAddress(entity.getAddress());
-        user.setEmail(entity.getEmail());
         user.setContactNumber(entity.getContactNumber());
-        user.setNewPassword(entity.getNewPassword());
-
+        user.setPrimaryPassword(entity.getPrimaryPassword());
+        user.setEmail(entity.getEmail());
         session.save(user);
         transaction.commit();
+        session.close();
         return true;
     }
 
@@ -45,10 +40,10 @@ public class UserUpdateDaoImpl implements UserUpdateDao {
     @Override
     public List<User> getAll() throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
+        //Transaction transaction = session.beginTransaction();
         Query query = session.createQuery("FROM User");
         List<User> list = query.list();
-        transaction.commit();
+        //transaction.commit();
         session.close();
         return list;
     }
@@ -56,14 +51,12 @@ public class UserUpdateDaoImpl implements UserUpdateDao {
     @Override
     public boolean searchUser(User entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
-        Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("FROM User WHERE email = :email AND newPassword = :newPassword");
+        Query query = session.createQuery("FROM User WHERE email = :email AND primaryPassword = :newPassword");
 
         query.setParameter("email", entity.getEmail());
-        query.setParameter("newPassword", entity.getNewPassword());
+        query.setParameter("newPassword", entity.getPrimaryPassword());
         User user = (User) query.uniqueResult();
 
-        transaction.commit();
         session.close();
 
         return user!=null;

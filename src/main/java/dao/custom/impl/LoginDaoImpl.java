@@ -1,17 +1,13 @@
 package dao.custom.impl;
 
 import dao.custom.LoginDao;
-import dao.util.CrudUtil;
 import dao.util.HibernateUtil;
-import db.DBConnection;
 import entity.Admin;
 import entity.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,10 +37,10 @@ public class LoginDaoImpl implements LoginDao {
     public boolean searchUser(User entity)  {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("FROM User WHERE email = :email AND newPassword = :newPassword");
+        Query query = session.createQuery("FROM User WHERE email = :email AND primaryPassword = :newPassword");
 
         query.setParameter("email",entity.getEmail());
-        query.setParameter("newPassword",entity.getNewPassword());
+        query.setParameter("newPassword",entity.getPrimaryPassword());
         User user = (User) query.uniqueResult();
         transaction.commit();
         session.close();

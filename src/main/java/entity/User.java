@@ -19,6 +19,7 @@ public class User {
     private int contactNumber;
     private String email;
     private String name;
-    private String newPassword;
+    private String primaryPassword;
+
 
 }

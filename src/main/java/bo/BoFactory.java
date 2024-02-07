@@ -1,6 +1,7 @@
 package bo;
 
 import bo.custom.impl.*;
+import dao.custom.impl.UpdatePasswordDaoImpl;
 import dao.util.BoType;
 
 import static dao.util.DaoType.CUSTOMER;
@@ -24,6 +25,7 @@ public class BoFactory {
             case ITEM:return (T)new ItemBoImpl();
             case ORDER_DETAILS : return (T) new OrderDetailsBoImpl();
             case ORDERS:return (T) new OrderBoImpl();
+            case UPDATE_PASSWORD:return (T) new UpdatePasswordBoImpl();
         }
         return null;
     }

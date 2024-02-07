@@ -14,6 +14,15 @@ public class UserDto {
     private int contactNumber;
     private String email;
     private String name;
+
+    public String getPrimaryPassword() {
+        return primaryPassword;
+    }
+
+    public void setPrimaryPassword(String primaryPassword) {
+        this.primaryPassword = primaryPassword;
+    }
+
     private String primaryPassword;
 
 }

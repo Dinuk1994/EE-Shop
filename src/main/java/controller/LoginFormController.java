@@ -86,7 +86,7 @@ public class LoginFormController {
 
 
                 }else if (loginBo.isFound(userDto)) {
-                     FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/UserDashboardForm.fxml"));
+                    FXMLLoader loader=new FXMLLoader(getClass().getResource("../view/UserDashboardForm.fxml"));
                     Parent root=loader.load();
                     UserDashboardFormController userDashboardFormController = loader.getController();
                     userDashboardFormController.setUserData(email,passWord);
@@ -186,6 +186,8 @@ public class LoginFormController {
     }
 
         public void otpText() throws IOException {
+            String email = txtEmail.getText();
+
             LocalDateTime otpCreatedTime = LocalDateTime.now();
 
             TextInputDialog inputDialog = new TextInputDialog();
@@ -200,11 +202,18 @@ public class LoginFormController {
                     LocalDateTime currentTime = LocalDateTime.now();
                     long minutesElapsed = ChronoUnit.MINUTES.between(otpCreatedTime, currentTime);
                     if (minutesElapsed <= 0.5) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdatePasswordForm.fxml"));
+                        Parent root =loader.load();
+                        UpdatePasswordFormController updatePasswordFormController=loader.getController();
+                        updatePasswordFormController.setUserData(email);
+                        System.out.println("Email from login" + email);
+
                         Stage stage = (Stage) pane.getScene().getWindow();
-                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/UpdatePasswordForm.fxml"))));
-                        stage.setTitle("Set Password Form");
+                        stage.setScene(new Scene(root));
+                        stage.setTitle("Password Update Form");
                         stage.setResizable(false);
                         stage.show();
+
                     } else {
                         new Alert(Alert.AlertType.WARNING, "OTP has expired").show();
                         OTP= loginBo.generateOTP(6);

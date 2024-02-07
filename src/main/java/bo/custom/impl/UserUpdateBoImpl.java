@@ -37,7 +37,7 @@ public class UserUpdateBoImpl implements UserUpdateBo {
                     user.getContactNumber(),
                     user.getEmail(),
                     user.getName(),
-                    user.getNewPassword()
+                    user.getPrimaryPassword()
             ));
         }
 
