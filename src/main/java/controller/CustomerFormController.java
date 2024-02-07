@@ -65,7 +65,6 @@ public class CustomerFormController {
 
         CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
-
     public void initialize() {
         generateId();
         setDate();
